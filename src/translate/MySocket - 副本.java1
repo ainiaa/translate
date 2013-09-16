@@ -1,0 +1,81 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package translate;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+/**
+ *
+ * @author Administrator
+ */
+public class MySocket {
+
+    public static void main(String args[]) {
+
+        try {
+//System.out.println("socket create before");
+            Socket socket = new Socket("172.17.0.80", 6001);
+//System.out.println("socket create after");
+            //向172.17.0.80的6001端口发出客户请求
+
+            BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
+//System.out.println("BufferedReader sin");
+            //由系统标准输入设备构造BufferedReader对象
+
+            PrintWriter os = new PrintWriter(socket.getOutputStream());
+
+            //由Socket对象得到输出流，并构造PrintWriter对象
+
+            BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//System.out.println("BufferedReader is");
+            //由Socket对象得到输入流，并构造相应的BufferedReader对象
+
+            String readline;
+            System.out.println("sin.readLine() before");
+            readline = sin.readLine(); //从系统标准输入读入一字符串
+//System.out.println("sin.readLine() after");
+            while (!readline.equals("bye")) {
+
+                //若从标准输入读入的字符串为 "bye"则停止循环
+
+                os.println(readline);
+
+                //将从系统标准输入读入的字符串输出到Server
+
+                os.flush();
+
+                //刷新输出流，使Server马上收到该字符串
+
+                System.out.println("Client:" + readline);
+
+                //在系统标准输出上打印读入的字符串
+                System.out.println("is.readLine() before");
+                readline = is.readLine();
+                System.out.println("readline:" + readline);
+                System.out.println("Server:" + is.readLine());
+
+                //从Server读入一字符串，并打印到标准输出上
+
+                readline = sin.readLine(); //从系统标准输入读入一字符串
+
+            } //继续循环
+
+            os.close(); //关闭Socket输出流
+
+            is.close(); //关闭Socket输入流
+
+            socket.close(); //关闭Socket
+
+        } catch (Exception e) {
+
+            System.out.println("Error" + e); //出错，则打印出错信息
+
+        }
+
+    }
+}
