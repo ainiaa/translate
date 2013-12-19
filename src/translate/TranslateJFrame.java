@@ -4,7 +4,6 @@
  */
 package translate;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -33,7 +32,8 @@ import jxl.read.biff.BiffException;
  */
 public class TranslateJFrame extends javax.swing.JFrame {
 
-    private static String cfgFileName = "ja_jp.php";
+    private static final String cfgFileName = "ja_jp.php";
+
     /**
      * Creates new form TranslateJFrame
      */
@@ -319,13 +319,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
             //模板文件
             String templet = templetjTextField.getText();
 
-            //输出路径
-            String outputPath;
-
             TranslateJFrame.refreshFileList(templet);
-
-            int fileCount = filelist.size();
-            int value = 0;
 
             ArrayList cleanedFileList = TranslateJFrame.cleanFileList();
             int cleanedFileCount = cleanedFileList.size();
@@ -351,40 +345,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
                 } catch (BiffException ex) {
                     Logger.getLogger(TranslateJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
-            /*for (int fileIndex = 0; fileIndex < fileCount; fileIndex++) {
-             Workbook workbook;
-             try {
-             String fileInfo = (String) filelist.get(fileIndex);
-             File file = new File(fileInfo);
-             String fileName = file.getName();
-             if (fileName.equals(cfgFileName)) {
-             String filePath = file.getParent();
-             workbook = Workbook.getWorkbook(new File(configFilePath));
-             int sheetCount = workbook.getNumberOfSheets();
-             for (int sheetIndex = 0; sheetIndex < sheetCount - 1; sheetIndex++) {
-             String[][] xmlTranslate = parseXls(configFilePath, sheetIndex);
-             File fileOutput = new File(filePath + "/pt_pt.php");
-             String template = TranslateJFrame.loadFileToString(fileOutput);
-             String finalCfg = TranslateJFrame.translate(template, xmlTranslate, sheetIndex);
-             writeToFile(finalCfg, fileOutput, "UTF-8");
-             }
-             }
-
-
-             if (value < 100) {
-             JOptionPane.showMessageDialog(null, "value:" + value + "   fileCount" + fileCount, "进度提示", JOptionPane.INFORMATION_MESSAGE);
-             progressbar.setValue(++value);
-             }
-
-             } catch (IOException ex) {
-             Logger.getLogger(TranslateJFrame.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (BiffException ex) {
-             Logger.getLogger(TranslateJFrame.class.getName()).log(Level.SEVERE, null, ex);
-             }
-
-             }*/
         }
         this.dispose();
 
@@ -434,8 +395,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_templetjButtonMouseClicked
 
     private void templetjTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_templetjTextFieldMouseClicked
-        // TODO add your handling code here:
-        File f = new File("D:\\www\\flowershop-stag\\fs\\vrelease\\testing\\app\\configs");
+        File f = new File("D:\\www\\flowershop-dev\\flowershop_us-dev\\branches\\dev_lwy\\app\\configs");
         JFileChooser jfc = new JFileChooser(f);
         int result;
         //功能选择
@@ -476,7 +436,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
         try {
 //            br = new BufferedReader(new FileReader(f));//这个样子会出现中文乱码问题
             br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"));
-            String line = null;
+            String line;
             StringBuilder sb = new StringBuilder((int) f.length());
             while ((line = br.readLine()) != null) {
                 sb.append(line).append("\r\n");
@@ -512,45 +472,44 @@ public class TranslateJFrame extends javax.swing.JFrame {
             String descColContent = content[rowNum][descIndex];//目的Col内容
             if (!targetColContent.trim().equals("")) {
                 //将  形为 => '%s' 替换为 => '%s',  --转义单引号 
-            String targetContent = "=> '" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "'";
-            String descContent = "=> '" + TranslateJFrame.replace(descColContent, "'", "\\'") + "'";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                String targetContent = "=> '" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "'";
+                String descContent = "=> '" + TranslateJFrame.replace(descColContent, "'", "\\'") + "'";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 '%s' 替换为 '%s',  --转义单引号 
-            targetContent = "'" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "',";
-            descContent = "'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "',";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                //将  形为 '%s' 替换为 '%s',  --转义单引号 
+                targetContent = "'" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "',";
+                descContent = "'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "',";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 => "%s" 替换为 => "%s",  --转义单引号 
-            targetContent = "=> \"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\"";
-            descContent = "=> \"" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\"";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                //将  形为 => "%s" 替换为 => "%s",  --转义单引号 
+                targetContent = "=> \"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\"";
+                descContent = "=> \"" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\"";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 "%s" 替换为 "%s",  --转义单引号 
-            targetContent = "\"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\",";
-            descContent = "\"" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\",";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                //将  形为 "%s" 替换为 "%s",  --转义单引号 
+                targetContent = "\"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\",";
+                descContent = "\"" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\",";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 => "%s" 替换为 => '%s',  --转义单引号 
-            targetContent = "=> \"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\"";
-            descContent = "=> \'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\'";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                //将  形为 => "%s" 替换为 => '%s',  --转义单引号 
+                targetContent = "=> \"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\"";
+                descContent = "=> \'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\'";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 "%s" 替换为 '%s',  --转义单引号 
-            targetContent = "\"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\",";
-            descContent = "\'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\',";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
+                //将  形为 "%s" 替换为 '%s',  --转义单引号 
+                targetContent = "\"" + TranslateJFrame.replace(targetColContent, "'", "\\'") + "\",";
+                descContent = "\'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\',";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
+                //将  形为 => "%s" 替换为 => '%s',  
+                targetContent = "=> \"" + targetColContent + "\"";
+                descContent = "=> \'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\'";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
 
-            //将  形为 => "%s" 替换为 => '%s',  
-            targetContent = "=> \"" + targetColContent + "\"";
-            descContent = "=> \'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\'";
-            template = TranslateJFrame.replace(template, targetContent, descContent);
-
-            //将  形为 "%s" 替换为 '%s',  
-            targetContent = "\"" + targetColContent + "\",";
-            descContent = "\'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\',";
-            template = TranslateJFrame.replace(template, targetContent, descContent); 
+                //将  形为 "%s" 替换为 '%s',  
+                targetContent = "\"" + targetColContent + "\",";
+                descContent = "\'" + TranslateJFrame.replace(descColContent, "'", "\\'") + "\',";
+                template = TranslateJFrame.replace(template, targetContent, descContent);
             }
         }
         return template;
@@ -574,7 +533,6 @@ public class TranslateJFrame extends javax.swing.JFrame {
                 finalContents[j][i] = sheet.getCell(i, j).getContents();
             }
         }
-
 
         workbook.close();
         return finalContents;
