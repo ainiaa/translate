@@ -45,8 +45,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="selectConfgFilejPanel" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="selectConfgFilejPanel" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -55,8 +55,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="selectConfgFilejPanel" min="-2" pref="181" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selectConfgFilejPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -105,29 +105,54 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="globalReplacejLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="sheetIndexjLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="sheetIndexjTextField" min="-2" pref="173" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="globalReplacejLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="globalReplacejRadioButtonYES" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="globalReplacejRadioButtonNO" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="destinationFileNamejLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="destinationFileNamejTextField" min="-2" pref="173" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="targetColumnjLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="sheetIndexjLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="sheetIndexjTextField" pref="173" max="32767" attributes="0"/>
+                                          <Component id="targetColumnjTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="destinationColumnjLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="destinationColumnjTextField" min="-2" pref="173" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="globalReplacejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="globalReplacejRadioButtonYES" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,6 +164,21 @@
                       <Component id="sheetIndexjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="targetColumnjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="targetColumnjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="destinationColumnjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="destinationColumnjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="destinationFileNamejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="destinationFileNamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="configFilejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="configFilejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -156,7 +196,7 @@
                       <Component id="outputjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="outputjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -222,6 +262,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="sheetIndexjTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="globalReplacejLabel">
           <Properties>
@@ -249,6 +292,27 @@
             <Property name="text" type="java.lang.String" value="&#x5426;"/>
             <Property name="actionCommand" type="java.lang.String" value="NO"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="targetColumnjLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x76ee;&#x6807;&#x5217;&#xff1a;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="targetColumnjTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="destinationColumnjLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x76ee;&#x7684;&#x5217;&#xff1a;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="destinationColumnjTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="destinationFileNamejLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x76ee;&#x7684;&#x6587;&#x4ef6;&#x540d;&#xff1a;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="destinationFileNamejTextField">
         </Component>
       </SubComponents>
     </Container>

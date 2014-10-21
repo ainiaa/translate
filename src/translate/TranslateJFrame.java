@@ -32,7 +32,7 @@ import jxl.read.biff.BiffException;
  */
 public class TranslateJFrame extends javax.swing.JFrame {
 
-    private static final String cfgFileName = "ja_jp.php";
+    private static String cfgFileName = "ja_jp.php";
 
     /**
      * Creates new form TranslateJFrame
@@ -66,6 +66,12 @@ public class TranslateJFrame extends javax.swing.JFrame {
         globalReplacejLabel = new javax.swing.JLabel();
         globalReplacejRadioButtonYES = new javax.swing.JRadioButton();
         globalReplacejRadioButtonNO = new javax.swing.JRadioButton();
+        targetColumnjLabel = new javax.swing.JLabel();
+        targetColumnjTextField = new javax.swing.JTextField();
+        destinationColumnjLabel = new javax.swing.JLabel();
+        destinationColumnjTextField = new javax.swing.JTextField();
+        destinationFileNamejLabel = new javax.swing.JLabel();
+        destinationFileNamejTextField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         parsejButton = new javax.swing.JButton();
         closejButton = new javax.swing.JButton();
@@ -124,6 +130,8 @@ public class TranslateJFrame extends javax.swing.JFrame {
 
         sheetIndexjLabel.setText("XML sheet编号：");
 
+        sheetIndexjTextField.setText("0");
+
         globalReplacejLabel.setText("全局替换：");
 
         globalReplacebuttonGroup.add(globalReplacejRadioButtonYES);
@@ -139,6 +147,12 @@ public class TranslateJFrame extends javax.swing.JFrame {
         globalReplacejRadioButtonNO.setSelected(true);
         globalReplacejRadioButtonNO.setText("否");
         globalReplacejRadioButtonNO.setActionCommand("NO");
+
+        targetColumnjLabel.setText("目标列：");
+
+        destinationColumnjLabel.setText("目的列：");
+
+        destinationFileNamejLabel.setText("目的文件名：");
 
         javax.swing.GroupLayout selectConfgFilejPanelLayout = new javax.swing.GroupLayout(selectConfgFilejPanel);
         selectConfgFilejPanel.setLayout(selectConfgFilejPanelLayout);
@@ -165,24 +179,42 @@ public class TranslateJFrame extends javax.swing.JFrame {
                     .addComponent(templetjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(outputjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectConfgFilejPanelLayout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(globalReplacejLabel)
-                    .addComponent(sheetIndexjLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
                 .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sheetIndexjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(globalReplacejLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(globalReplacejRadioButtonYES)
                         .addGap(18, 18, 18)
-                        .addComponent(globalReplacejRadioButtonNO)))
-                .addGap(95, 95, 95))
+                        .addComponent(globalReplacejRadioButtonNO))
+                    .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
+                                .addComponent(destinationFileNamejLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(destinationFileNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
+                                    .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(targetColumnjLabel)
+                                        .addComponent(sheetIndexjLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sheetIndexjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                        .addComponent(targetColumnjTextField)))
+                                .addGroup(selectConfgFilejPanelLayout.createSequentialGroup()
+                                    .addGap(42, 42, 42)
+                                    .addComponent(destinationColumnjLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(destinationColumnjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         selectConfgFilejPanelLayout.setVerticalGroup(
             selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectConfgFilejPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(globalReplacejLabel)
                     .addComponent(globalReplacejRadioButtonYES)
@@ -192,6 +224,18 @@ public class TranslateJFrame extends javax.swing.JFrame {
                     .addComponent(sheetIndexjLabel)
                     .addComponent(sheetIndexjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(targetColumnjLabel)
+                    .addComponent(targetColumnjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(destinationColumnjLabel)
+                    .addComponent(destinationColumnjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(destinationFileNamejLabel)
+                    .addComponent(destinationFileNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(selectConfgFilejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(configFilejLabel)
                     .addComponent(configFilejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +250,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
                     .addComponent(outputjLabel)
                     .addComponent(outputjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputjButton))
-                .addGap(44, 44, 44))
+                .addContainerGap())
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("操作"));
@@ -256,15 +300,15 @@ public class TranslateJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(selectConfgFilejPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(selectConfgFilejPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(selectConfgFilejPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(selectConfgFilejPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -281,6 +325,11 @@ public class TranslateJFrame extends javax.swing.JFrame {
             func = globalReplacebuttonGroup.getSelection().getActionCommand();
         }
 
+        String targetColumn = targetColumnjTextField.getText().trim();
+        String destinationColumn = destinationColumnjTextField.getText().trim();
+        int targetColunmIndex = Integer.valueOf(targetColumn);
+        int destinationColumnIndex = Integer.valueOf(destinationColumn);
+
         if ("NO".equals(func)) {//单个sheet替换
             //sheet编号
             int sheetIndex = Integer.parseInt(sheetIndexjTextField.getText().trim());
@@ -294,6 +343,11 @@ public class TranslateJFrame extends javax.swing.JFrame {
             //输出路径
             String outputPath = outputjTextField.getText();
 
+            String fileName = destinationFileNamejTextField.getText().trim();
+            if (!fileName.isEmpty()) {
+                cfgFileName = fileName;
+            }
+
             String msg = "";
             if (!msg.isEmpty()) {
                 JOptionPane.showMessageDialog(null, msg, "信息提示", JOptionPane.ERROR_MESSAGE);
@@ -303,7 +357,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
                 String[][] xmlTranslate = parseXls(configFilePath, sheetIndex);
                 File fileOutput = new File(outputPath + "/" + cfgFileName);
                 String template = TranslateJFrame.loadFileToString(new File(templet));
-                String finalCfg = TranslateJFrame.translate(template, xmlTranslate, sheetIndex);
+                String finalCfg = TranslateJFrame.translate(template, xmlTranslate, sheetIndex, targetColunmIndex, destinationColumnIndex);
                 writeToFile(finalCfg, fileOutput, "UTF-8");
             } catch (IOException ex) {
                 Logger.getLogger(TranslateJFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -336,7 +390,7 @@ public class TranslateJFrame extends javax.swing.JFrame {
                         System.out.println("fileOutput:" + filePath + "/" + cfgFileName);
                         File fileOutput = new File(filePath + "/" + cfgFileName);
                         String template = TranslateJFrame.loadFileToString(fileOutput);
-                        String finalCfg = TranslateJFrame.translate(template, xmlTranslate, sheetIndex);
+                        String finalCfg = TranslateJFrame.translate(template, xmlTranslate, sheetIndex, targetColunmIndex, destinationColumnIndex);
                         writeToFile(finalCfg, fileOutput, "UTF-8");
                     }
 
@@ -461,12 +515,15 @@ public class TranslateJFrame extends javax.swing.JFrame {
      * @param template
      * @param content
      * @param sheetIndex
+     * @param targetIndex
+     * @param descIndex
      * @return
      */
-    public static String translate(String template, String[][] content, int sheetIndex) {
+    public static String translate(String template, String[][] content, int sheetIndex, int targetIndex, int descIndex) {
         int rows = content.length;
-        int targetIndex = 0;//目标列数(从0开始计数)
-        int descIndex = 1;//目的列数(从0开始计数)
+
+//        int targetIndex = 0;//目标列数(从0开始计数)
+//        int descIndex = 1;//目的列数(从0开始计数)
         for (int rowNum = 0; rowNum < rows; rowNum++) {
             String targetColContent = content[rowNum][targetIndex];//目标Col内容
             String descColContent = content[rowNum][descIndex];//目的Col内容
@@ -620,6 +677,10 @@ public class TranslateJFrame extends javax.swing.JFrame {
     private javax.swing.JButton configFilejButton;
     private javax.swing.JLabel configFilejLabel;
     private javax.swing.JTextField configFilejTextField;
+    private javax.swing.JLabel destinationColumnjLabel;
+    private javax.swing.JTextField destinationColumnjTextField;
+    private javax.swing.JLabel destinationFileNamejLabel;
+    private javax.swing.JTextField destinationFileNamejTextField;
     private javax.swing.ButtonGroup globalReplacebuttonGroup;
     private javax.swing.JLabel globalReplacejLabel;
     private javax.swing.JRadioButton globalReplacejRadioButtonNO;
@@ -635,6 +696,8 @@ public class TranslateJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel selectConfgFilejPanel;
     private javax.swing.JLabel sheetIndexjLabel;
     private javax.swing.JTextField sheetIndexjTextField;
+    private javax.swing.JLabel targetColumnjLabel;
+    private javax.swing.JTextField targetColumnjTextField;
     private javax.swing.JButton templetjButton;
     private javax.swing.JLabel templetjLabel;
     private javax.swing.JTextField templetjTextField;
